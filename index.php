@@ -17,34 +17,45 @@ if (! file_exists($fi)) {
 
 include $fi;
 
-$text = $str = str_replace(array("\n", "\r", "\x"), "", strtolower("hello"));
-$text_len = strlen($text);
-$row_len = $row_count + $row_to_start_from;
-$out = "";
+function convert($str) {
+  global $row_count, $row_to_start_from, $letters;
 
-//convert used characters to arrays
-for ($i = 0; $i < $text_len; $i++) {
-  $let = $letters[$text[$i]];
+  $text = str_replace(array("\n", "\r", "\x"), "", strtolower($str));
+  $text_len = strlen($text);
+  $row_len = $row_count + $row_to_start_from;
+  $line = "";
 
-  if (! is_array($let)) {
-    $letters[$text[$i]] = explode("\n", $let);
-  }
-}
+  //convert used characters to arrays
+  for ($i = 0; $i < $text_len; $i++) {
+    $let = $letters[$text[$i]];
 
-//output ascii text
-for ($i = $row_to_start_from; $i < $row_len; $i++) {
-  for ($j = 0; $j < $text_len; $j++) {
-    $chars = $letters[$text[$j]][$i];
-
-    if ($chars) {
-      $out .= $chars;
-    } else {
-      exit("You're using an unsupported character: " . substr($text, 0, $j) . "[?]\n");
+    if (! is_array($let)) {
+      $letters[$text[$i]] = explode("\n", $let);
     }
   }
 
-  $out .= "\n";
+  //output ascii text
+  for ($i = $row_to_start_from; $i < $row_len; $i++) {
+    for ($j = 0; $j < $text_len; $j++) {
+      $chars = $letters[$text[$j]][$i];
+
+      if ($chars) {
+        $line .= $chars;
+      } else {
+        exit("You're using an unsupported character: " . substr($text, 0, $j) . "[?]\n");
+      }
+    }
+
+    $line .= "\n";
+  }
+
+  return $line;
 }
+
+$out = "";
+
+$out .= convert("hi");
+$out .= convert("there");
 
 echo $out;
 
