@@ -10,11 +10,12 @@
  */
 
 $parts = explode("/", ltrim(urldecode($_SERVER["REQUEST_URI"]), "/"));
-array_shift($parts);
 
-$parts_len = count($parts);
+array_shift($parts); //removes parent directory
+
 $set = $parts[0];
 $fi = "./sets/$set.php";
+$parts_len = count($parts);
 
 include "./browser.php";
 include "./sets.php";

@@ -46,7 +46,7 @@ curl grafluxe.com/ascii/fuzzy/mic%20%20/check/one%20%20
 
 It's available via the browser too.
 
-***
+## Help
 
 Visit `curl grafluxe.com/ascii/` for the below help page:
 
@@ -70,9 +70,14 @@ MORE
   See the README and/or add a new character set at https://github.com/Grafluxe/text-to-ascii
 ```
 
-## Developer Note
+## Notes
 
-The logic for `$parts` (in `index.php`) assumes this project will live nested inside *one* folder from your root directory. If on your server you plan to have it live nested inside multiple directories, update the `array_shift($parts)` line.
+- This project outputs ASCII art, therefore window size matters. Using a shell/browser window that is too thin will cause the text lines to break and thus become illegible.
+- Check out `curl wttr.in` for really cool ASCII weather updates. Seeing that project inspired me to create this.
+
+### Developer Note
+
+- The logic for `$parts` (in `index.php`) assumes this project will live inside a folder on your root directory. If on your server you plan to have it nested inside multiple directories, update the `array_shift($parts)` line.
 
 ## License
 
