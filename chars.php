@@ -26,7 +26,7 @@ CHARACTERS
 SAMPLES
   1) curl grafluxe.com/ascii/$parts[0]/hello
   2) curl grafluxe.com/ascii/$parts[0]/hello/newline
-  3) curl \"grafluxe.com/ascii/$parts[0]/hello there\"
+  3) curl grafluxe.com/ascii/$parts[0]/hello%20there
   ";
 
   echo "$out\n";

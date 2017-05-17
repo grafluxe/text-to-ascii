@@ -10,6 +10,8 @@
  */
 
 $parts = explode("/", ltrim(urldecode($_SERVER["REQUEST_URI"]), "/"));
+array_shift($parts);
+
 $parts_len = count($parts);
 $set = $parts[0];
 $fi = "./sets/$set.php";
@@ -21,14 +23,14 @@ if (! file_exists($fi)) {
   echo browserify("
 DEFINITIONS
   <set>   = Your selected character set.
-  <words> = The words to output. Use slash to create newlines.
+  <words> = The words to output. Use slashes to create newlines.
 
 USAGE
   curl grafluxe.com/ascii/<set>/<words>
 
 SAMPLES
   1) curl grafluxe.com/ascii/basic/hello
-  2) curl \"grafluxe.com/ascii/fuzzy/converts/text/to ascii\"
+  2) curl grafluxe.com/ascii/fuzzy/converts/text/to%20ascii
 
 HELPERS
   To list available character sets, use: curl grafluxe.com/ascii/?show=sets
