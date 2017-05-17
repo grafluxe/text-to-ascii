@@ -17,8 +17,13 @@ $set = $parts[0];
 $fi = "./sets/$set.php";
 $parts_len = count($parts);
 
+//handle cases with blank words (trailing slash).
+if ($parts_len == 2 && $parts[1] == "") {
+  array_pop($parts);
+}
+
 include "./browser.php";
-include "./sets.php";
+include "./list-sets.php";
 
 if (! file_exists($fi)) {
   echo browserify("
@@ -47,7 +52,7 @@ MORE
 }
 
 include $fi;
-include "./chars.php";
+include "./set-details.php";
 
 function convert($str) {
   global $row_count, $row_to_start_from, $letters;

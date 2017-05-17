@@ -9,10 +9,20 @@
  *
  */
 
+$author = $author ?: "-";
+$description = $description ?: "-";
+$set_name = ucfirst($parts[0]);
+
 if (count($parts) == 1) {
   $out = "
 SET
-  $parts[0]
+  $set_name
+
+BY
+  $author
+
+DESCRIPTION
+  $description
 
 CHARACTERS
   ";

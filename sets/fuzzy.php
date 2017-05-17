@@ -8,6 +8,8 @@
  * Fuzzy letters.
  */
 
+$author = "Leandro Silva";
+$description = "A limited monospaced sans-serif character set.";
 $row_count = 7;
 $row_to_start_from = 1;
 

@@ -46,6 +46,22 @@ curl grafluxe.com/ascii/fuzzy/mic%20%20/check/one%20%20
 
 It's available via the browser too.
 
+## Working With Special Characters
+
+Note that some characters need to be URL encoded while others can simply be escaped.
+
+```
+Bad : curl localhost:8888/text-to-ascii/basic/hi<
+Good: curl localhost:8888/text-to-ascii/basic/hi\<
+```
+
+```
+Bad : curl localhost:8888/text-to-ascii/basic/hi\[
+Good: curl localhost:8888/text-to-ascii/basic/hi%5B
+```
+
+Before using a character set, make sure that the characters you want to use are supported. See the *helper* routes below.
+
 ## Help
 
 Visit `curl grafluxe.com/ascii/` for the below help page:
@@ -78,6 +94,7 @@ MORE
 ### Developer Note
 
 - The logic for `$parts` (in `index.php`) assumes this project will live inside a folder on your root directory. If on your server you plan to have it nested inside multiple directories, update the `array_shift($parts)` line.
+- Feel free to send a PR with new character sets.
 
 ## License
 
