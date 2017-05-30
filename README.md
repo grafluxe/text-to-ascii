@@ -3,7 +3,7 @@
 Via your favorite CLI, ping the below site to output your text in an ASCII art style.
 
 ```
-curl grafluxe.com/ascii/basic/hello
+curl grafluxe.com/o/ascii/basic/hello
 ```
 
 ```
@@ -17,7 +17,7 @@ curl grafluxe.com/ascii/basic/hello
 or
 
 ```
-curl grafluxe.com/ascii/fuzzy/mic%20%20/check/one%20%20
+curl grafluxe.com/o/ascii/fuzzy/mic%20%20/check/one%20%20
 ```
 
 ```
@@ -51,20 +51,20 @@ It's available via the browser too.
 Note that some characters need to be URL encoded while others can simply be escaped.
 
 ```
-Bad : curl localhost:8888/text-to-ascii/basic/hi<
-Good: curl localhost:8888/text-to-ascii/basic/hi\<
+Bad : curl grafluxe.com/o/ascii/basic/hi<
+Good: curl grafluxe.com/o/ascii/basic/hi\<
 ```
 
 ```
-Bad : curl localhost:8888/text-to-ascii/basic/hi\[
-Good: curl localhost:8888/text-to-ascii/basic/hi%5B
+Bad : curl grafluxe.com/o/ascii/basic/hi\[
+Good: curl grafluxe.com/o/ascii/basic/hi%5B
 ```
 
 Before using a character set, make sure that the characters you want to use are supported. See the *helper* routes below.
 
 ## Help
 
-Visit `curl grafluxe.com/ascii/` for the below help page:
+Visit `curl grafluxe.com/o/ascii/` for the below help page:
 
 ```
 DEFINITIONS
@@ -72,15 +72,15 @@ DEFINITIONS
   <words> = The words to output. Use slashes to create newlines.
 
 USAGE
-  curl grafluxe.com/ascii/<set>/<words>
+  curl grafluxe.com/o/ascii/<set>/<words>
 
 SAMPLES
-  1) curl grafluxe.com/ascii/basic/hello
-  2) curl grafluxe.com/ascii/fuzzy/converts/text/to%20ascii
+  1) curl grafluxe.com/o/ascii/basic/hello
+  2) curl grafluxe.com/o/ascii/fuzzy/converts/text/to%20ascii
 
 HELPERS
-  To list available character sets, use: curl grafluxe.com/ascii/?show=sets
-  To list available characters in a specific set, use: curl grafluxe.com/ascii/<set>
+  To list available character sets, use: curl grafluxe.com/o/ascii/?show=sets
+  To list available characters in a specific set, use: curl grafluxe.com/o/ascii/<set>
 
 MORE
   See the README and/or add a new character set at https://github.com/Grafluxe/text-to-ascii
@@ -93,7 +93,7 @@ MORE
 
 ### Developer Note
 
-- The logic for `$parts` (in `index.php`) assumes this project will live inside a folder on your root directory. If on your server you plan to have it nested inside multiple directories, update the `array_shift($parts)` line.
+- If you host this project on your server, adjust the `$distance_from_root` property at `index.php` to match the number of nested directories in which this project lives (e.g. if `./path/to/ascii`, set `$distance_from_root` to `3`).
 - Feel free to send a PR with new character sets.
 
 ## License
