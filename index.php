@@ -9,9 +9,12 @@
  *
  */
 
+$distance_from_root = 2;
 $parts = explode("/", ltrim(urldecode($_SERVER["REQUEST_URI"]), "/"));
 
-array_shift($parts); //removes parent directory
+for ($i = 0; $i < $distance_from_root; $i++) {
+  array_shift($parts);
+}
 
 $set = $parts[0];
 $fi = "./sets/$set.php";
